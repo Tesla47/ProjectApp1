@@ -7,7 +7,7 @@ const HomeScreen = (props) => {
   // console.log(props)
   return (
     <View style={styles.homescreen}>
-      <Text>Home</Text>
+      {/* <Text>Home</Text>
       <Button
         title="Chose Miniature"
         onPress={() => {
@@ -15,10 +15,18 @@ const HomeScreen = (props) => {
             routeName: "ChosenMiniature",
           });
         }}
-      />
+      /> */}
       <View style={styles.imageContainer}>
         <Image
           source={require("../assets/pic_one.jpg")}
+          style={styles.image_prop}
+          resizeMode="cover"
+        />
+      </View>
+
+      <View style={styles.imageContainer}>
+        <Image
+          source={require("../assets/pic_two.jpg")}
           style={styles.image_prop}
           resizeMode="cover"
         />
@@ -30,21 +38,26 @@ const HomeScreen = (props) => {
 const styles = StyleSheet.create({
   homescreen: {
     flex: 0.5,
-    justifyContent: "center",
-    alignItems: "center",
+    justifyContent: "flex-start",
+    alignItems: "baseline",
+
   },
+  
   imageContainer: {
-    width: '80%',
-    height: 300,
-    borderRadius: 20,
+    width: '50%',
+    height: '70%',
+    borderRadius: 10,
     borderWidth: 3,
     borderColor: "white",
     overflow: 'hidden',
-    marginVertical: 30
+    marginVertical: 10,
+    // flexDirection: 'row',
+    // flexWrap: 'wrap'
+  
   },
   image_prop: {
     width: "100%",
-    height: 400,
+    height: '100%',
   },
 });
 
