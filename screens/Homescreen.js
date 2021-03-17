@@ -1,111 +1,46 @@
-import React from "react";
-import { StyleSheet, Text, View, Button, Image, Dimensions} from "react-native";
-import ChooseMiniature from "./ChosenMiniatureScreen";
-import Card from "../components/card";
-import { FlatList, ScrollView } from "react-native-gesture-handler";
+import { StatusBar } from "expo-status-bar";
+import React, { useState } from "react";
+import { StyleSheet, Text, View, Image, FlatList,Dimensions} from "react-native";
 
-const HomeScreen = (props) => {
-  // console.log(props)
+export default function pic_flatlist() {
+  const [images, setimages] = useState([
+    {url:require("../assets/pic_one.jpg"),id:1},
+    {url: require("../assets/pic_two.jpg"), id:2},
+    {url: require("../assets/pic_three.jpg"),id: 3},
+    {url: require("../assets/pic_four.jpg"),id: 4},
+    {url: require("../assets/pic_five.jpg"),id: 5},
+    {url: require("../assets/pic_six.jpg"),id: 6},
+  ]);
+
   return (
-    
-          <ScrollView>
-
-            <View style={styles.pic_1_2}>
-              {/* <Text>Home</Text>
-            <Button
-              title="Chose Miniature"
-              onPress={() => {
-                props.navigation.navigate({
-                  routeName: "ChosenMiniature",
-                });
-              }}
-            /> */}
-              <View style={styles.imageContainer}>
-                <Image
-                  source={require("../assets/pic_one.jpg")}
-                  style={styles.image_prop}
-                  resizeMode="cover"
-                />
-              </View>
-
-              <View style={styles.imageContainer}>
-                <Image
-                  source={require("../assets/pic_two.jpg")}
-                  style={styles.image_prop}
-                  resizeMode="cover"
-                />
-              </View>
-
-              <View style={styles.pic_3_4}>
-                <View style={styles.imageContainer}>
-                  <Image
-                    source={require("../assets/pic_three.jpg")}
-                    style={styles.image_prop}
-                    resizeMode="cover"
-                  />
-                </View>
-
-                <View style={styles.imageContainer}>
-                  <Image
-                    source={require("../assets/pic_four.jpg")}
-                    style={styles.image_prop}
-                    resizeMode="cover"
-                  />
-                </View>
-              </View>
-            </View>
-          </ScrollView>
+    <FlatList
+      data={images}
+      key={"2"}
+      numColumns={2}
+      contentContainerStyle={styles.homescreen}
+      renderItem={({ item }) => (
+        <Image
+          source={item.url}
+          style={{
+            width: Dimensions.get("window").width * 0.45,
+            height: Dimensions.get("window").width * 0.55,
+            borderWidth: 2,
+            borderColor: "white",
+            resizeMode: "cover",
+            marginVertical: Dimensions.get("window").width * 0.02,
+            marginHorizontal: Dimensions.get("window").width * 0.02,
+          }}
+          keyExtractor={(item) => item.id}
+        />
+      )}
+    />
   );
-};
+}
 
 const styles = StyleSheet.create({
-  pic_1_2: {
-    flex: 1,
-    justifyContent: "center",
+  homescreen: {
+    width:Dimensions.get('window').width,
     alignItems: "center",
-    flexDirection: "column",
-//     // flexWrap: "wrap",
-//     // padding: 5,
-//     // width: '100%',
-//     // height: '100%'
-//   },
-  pic_3_4: {
-    flex: 1,
     justifyContent: "center",
-    alignItems: "center",
-    flexDirection: "row",
-    flexWrap: "wrap",
-    // padding: 5,
-    // width: '100%',
-    // height: '100%'
-  },
-
-  imageContainer: {
-    width: 200,
-    height: 200,
-    // height: Dimensions.get("window").height / 3 - 12,
-    // width: Dimensions.get("window").height / 2 - 12,
-    borderRadius: 20,
-    borderWidth: 3,
-    borderColor: "white",
-    overflow: "hidden",
-    marginVertical: 30,
-    marginHorizontal: 3,
-    // width: "80%",
-    // height: 200,
-    // borderRadius: 35,
-    // borderWidth: 3,
-    // borderColor: "white",
-    // overflow: "hidden",
-    // marginVertical: 10,
-    // resizeMode: 'cover'
-    // // flexDirection: "row",
-    // // flexWrap: "wrap",
-  },
-  image_prop: {
-    width: "100%",
-    height: "100%",
   },
 });
-
-export default HomeScreen;
