@@ -1,6 +1,15 @@
 import { StatusBar } from "expo-status-bar";
 import React, { useState } from "react";
-import { StyleSheet, Text, View, Image, FlatList,Dimensions, TouchableOpacity, ProgressViewIOSComponent, Alert} from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  Image,
+  FlatList,
+  Dimensions,
+  TouchableOpacity,
+  ProgressViewIOSComponent,
+} from "react-native";
 
 export default function pic_flatlist(Props) {
   var imagesUrl = [
@@ -19,7 +28,7 @@ export default function pic_flatlist(Props) {
     { url: require("../assets/pic_five.jpg"), id: 5 },
     { url: require("../assets/pic_six.jpg"), id: 6 },
   ]);
-  
+
   return (
     <FlatList
       data={images}
@@ -53,11 +62,9 @@ export default function pic_flatlist(Props) {
     />
   );
 }
-
-
 const styles = StyleSheet.create({
   homescreen: {
-    width:Dimensions.get('window').width,
+    width: Dimensions.get("window").width,
     alignItems: "center",
     justifyContent: "center",
   },
