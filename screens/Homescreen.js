@@ -1,5 +1,7 @@
 import { StatusBar } from "expo-status-bar";
 import React, { useState } from "react";
+import Icon from "react-native-vector-icons/FontAwesome";
+
 import {
   StyleSheet,
   Text,
@@ -9,9 +11,10 @@ import {
   Dimensions,
   TouchableOpacity,
   ProgressViewIOSComponent,
+  Button,
 } from "react-native";
 
-export default function pic_flatlist(Props) {
+export default function PicFlatlist(props) {
   var imagesUrl = [
     { url: "../assets/pic_one.jpg", id: 1 },
     { url: "../assets/pic_two.jpg", id: 2 },
@@ -30,42 +33,61 @@ export default function pic_flatlist(Props) {
   ]);
 
   return (
-    <FlatList
-      data={images}
-      key={"2"}
-      numColumns={2}
-      contentContainerStyle={styles.homescreen}
-      renderItem={({ item }) => (
-        <TouchableOpacity
-          onPress={() =>
-            Props.navigation.navigate("Image Details", {
-              Id: item.id,
-              allImages: images,
-            })
-          }
-        >
-          <Image
-            source={item.url}
-            style={{
-              width: Dimensions.get("window").width * 0.45,
-              height: Dimensions.get("window").width * 0.55,
-              borderWidth: 2,
-              borderColor: "white",
-              resizeMode: "cover",
-              marginVertical: Dimensions.get("window").width * 0.02,
-              marginHorizontal: Dimensions.get("window").width * 0.02,
-            }}
-            keyExtractor={(item) => item.id}
-          />
-        </TouchableOpacity>
-      )}
-    />
+    <View style={styles.outerContainer}>
+      <FlatList
+        data={images}
+        key={"2"}
+        numColumns={2}
+        contentContainerStyle={styles.homescreen}
+        renderItem={({ item }) => (
+          <TouchableOpacity
+            onPress={() =>
+              props.navigation.navigate("Image Details", {
+                Id: item.id,
+                allImages: images,
+              })
+            }
+          >
+            <Image
+              source={item.url}
+              style={{
+                width: Dimensions.get("window").width * 0.45,
+                height: Dimensions.get("window").width * 0.55,
+                borderWidth: 2,
+                borderColor: "white",
+                resizeMode: "cover",
+                marginVertical: Dimensions.get("window").width * 0.02,
+                marginHorizontal: Dimensions.get("window").width * 0.02,
+              }}
+              keyExtractor={(item) => item.id}
+            />
+          </TouchableOpacity>
+        )}
+      />
+      <View style={styles.buttonRow}>
+        <Icon.Button name="sort" backgroundColor="#ffa500">
+          <Text style={{ fontFamily: "Arial", fontSize: 15 }}>View More</Text> 
+          
+        </Icon.Button>
+      </View>
+    </View>
   );
 }
+
 const styles = StyleSheet.create({
   homescreen: {
     width: Dimensions.get("window").width,
     alignItems: "center",
+    justifyContent: "center",
+  },
+  outerContainer: {
+    position: "relative",
+  },
+  buttonRow: {
+    margin: 15,
+    flexDirection: "row",
+    alignContent: "center",
+    alignSelf: "center",
     justifyContent: "center",
   },
 });

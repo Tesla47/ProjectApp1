@@ -6,10 +6,7 @@ import {
   View,
   Image,
   FlatList,
-  Dimensions,
-  TouchableOpacity,
-  ProgressViewIOSComponent,
-  Alert,
+  Dimensions
 } from "react-native";
 
 
