@@ -4,22 +4,19 @@ import { Platform } from "react-native";
 
 import HomeScreen from '../screens/Homescreen';
 import ImageDetails from "../screens/Image_details";
-import ChosenMiniatureScreen from '../screens/ChosenMiniatureScreen';
-import NextMiniatureScreen from '../screens/NextMiniatureScreen';
+import drawer from "../components/drawer";
+
 
 const MiniaturesNavigator = createStackNavigator(
   {
     Home: HomeScreen,
-    ChosenMiniature: ChosenMiniatureScreen,
-    NextMiniature: NextMiniatureScreen,
-    "Image Details": ImageDetails
+    "Image Details": ImageDetails,
+    Drawer: drawer,
   },
   {
     defaultNavigationOptions: {
-      headerTitleAlign: "center"
+      headerTitleAlign: "center",
     },
-  });
- 
-
-
+  }
+);
 export default createAppContainer (MiniaturesNavigator);
