@@ -20,16 +20,18 @@ export default function ImageDetails(Props) {
       key={"2"}
       numColumns={1}
       contentContainerStyle={styles.homescreen}
-      renderItem={( item ) => loadImage(ids,item)}
+      keyExtractor={(item) => item.id.toString()}
+      renderItem={(item) => loadImage(ids, item)}
     />
   );
 }
 
 loadImage = (id,item) => {
-    if(id === item.item.id)
+    if(String(id) === String(item.item.id))
     {
+      console.log(item.item.id,id)
       return (
-        <View>
+        <View style={styles.homescreen}>
           <Image
             source={item.item.url}
             style={{
@@ -41,7 +43,7 @@ loadImage = (id,item) => {
               marginVertical: Dimensions.get("window").width * 0.02,
               marginHorizontal: Dimensions.get("window").width * 0.02,
             }}
-            keyExtractor={(item) => item.item.id.toString()}
+            
           />
           <Text>All Image Content</Text>
         </View>

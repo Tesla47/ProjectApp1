@@ -1,5 +1,7 @@
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
+import {createStackNavigator} from 'react-navigation-stack';
+import About from '../screens/About'
 
 const About = (props) => {
   return (
