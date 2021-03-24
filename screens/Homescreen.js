@@ -11,10 +11,10 @@ import {
   Dimensions,
   TouchableOpacity,
 } from "react-native";
-import { ScrollView } from "react-native-gesture-handler";
 
+var loadImageCount = 6;
 export default function PicFlatlist(props) {
-
+  
   const [images, setimages] = useState([
     { url: require("../assets/pic_1.jpg"), id: 1 },
     { url: require("../assets/pic_2.jpg"), id: 2 },
@@ -28,24 +28,24 @@ export default function PicFlatlist(props) {
     { url: require("../assets/pic_10.jpg"), id: 10 },
     { url: require("../assets/pic_11.jpg"), id: 11 },
     { url: require("../assets/pic_12.jpg"), id: 12 },
-    // { url: require("../assets/pic_five.jpg"), id: 13 },
-    // { url: require("../assets/pic_six.jpg"), id: 14 },
-    // { url: require("../assets/pic_seven.jpg"), id: 15 },
-    // { url: require("../assets/pic_eight.jpg"), id: 16 },
-    // { url: require("../assets/pic_one.jpg"), id: 17 },
-    // { url: require("../assets/pic_two.jpg"), id: 18 },
-    // { url: require("../assets/pic_three.jpg"), id: 19 },
-    // { url: require("../assets/pic_four.jpg"), id: 20 },
-    // { url: require("../assets/pic_five.jpg"), id: 21 },
-    // { url: require("../assets/pic_six.jpg"), id: 22 },
-    // { url: require("../assets/pic_seven.jpg"), id: 23 },
-    // { url: require("../assets/pic_eight.jpg"), id: 24 },
+    { url: require("../assets/pic_13.jpg"), id: 13 },
+    { url: require("../assets/pic_14.jpg"), id: 14 },
+    { url: require("../assets/pic_15.jpg"), id: 15 },
+    { url: require("../assets/pic_16.jpg"), id: 16 },
+    { url: require("../assets/pic_17.jpg"), id: 17 },
+    { url: require("../assets/pic_18.jpg"), id: 18 },
+    { url: require("../assets/pic_19.jpg"), id: 19 },
+    { url: require("../assets/pic_20.jpg"), id: 20 },
+    { url: require("../assets/pic_21.jpg"), id: 21 },
+    { url: require("../assets/pic_22.jpg"), id: 22 },
+    { url: require("../assets/pic_23.jpg"), id: 23 },
+    { url: require("../assets/pic_24.jpg"), id: 24 },
   ]);
 
   return (
     <View style={styles.outerContainer}>
       <FlatList
-        data={images}
+        data={images.slice(0,loadImageCount)}
         key={"2"}
         numColumns={2}
         contentContainerStyle={styles.homescreen}
@@ -56,8 +56,7 @@ export default function PicFlatlist(props) {
             activeOpacity={0.8}
             onPress={() =>
               props.navigation.navigate("Image Details", {
-                Id: String(item.id),
-                allImages: images,
+                SelectedImage: [item],
               })
             }
           >
@@ -86,7 +85,8 @@ function renderFooter(){
           <Icon.Button
             name="sort"
             backgroundColor="#ffa500"
-            onPress={() => alert("View More Button is Pressed")}
+            onPress={() => {loadImageCount = loadImageCount + 12;
+            PicFlatlist();}}
           >
             <Text style={{ fontSize: 15 }}>
               View More
@@ -101,7 +101,7 @@ const styles = StyleSheet.create({
     width: Dimensions.get("window").width,
     alignItems: "center",
     justifyContent: "center",
-    paddingBottom: Dimensions.get("window").height * 0.3,
+    // paddingBottom: Dimensions.get("window").height * 0.3,
   },
   outerContainer: {
     position: "relative",

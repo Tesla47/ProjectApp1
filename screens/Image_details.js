@@ -9,27 +9,21 @@ import {
   Dimensions
 } from "react-native";
 
-
+var count = 0;
 export default function ImageDetails(Props) {
-  var ids = Props.navigation.getParam("Id");
-  const [images, setimages] = useState(Props.navigation.getParam("allImages"));
-
+  const [images, setimages] = useState(Props.navigation.getParam("SelectedImage"));
   return (
     <FlatList
       data={images}
-      key={"2"}
       numColumns={1}
       contentContainerStyle={styles.homescreen}
       keyExtractor={(item) => item.id.toString()}
-      renderItem={(item) => loadImage(ids, item)}
+      renderItem={(item) => loadImage( item)}
     />
   );
 }
 
-loadImage = (id,item) => {
-    if(String(id) === String(item.item.id))
-    {
-      console.log(item.item.id,id)
+loadImage = (item) => {
       return (
         <View style={styles.homescreen}>
           <Image
@@ -43,17 +37,22 @@ loadImage = (id,item) => {
               marginVertical: Dimensions.get("window").width * 0.02,
               marginHorizontal: Dimensions.get("window").width * 0.02,
             }}
-            
           />
-          <Text>All Image Content</Text>
+          <Text>
+            Miniature Description
+          </Text>
+          
         </View>
       );}
-}
+
 
 const styles = StyleSheet.create({
   homescreen: {
+    position: "relative",
     width: Dimensions.get("window").width,
     alignItems: "center",
+    alignSelf: 'center',
     justifyContent: "center",
   },
 });
+
