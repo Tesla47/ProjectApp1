@@ -27,8 +27,13 @@ export default class ImageDetails extends Component<Props,State> {
         images: this.props.navigation.getParam("SelectedImage")
     };
   }
+  
   render ()  {
     return (
+      <View>
+      <View style={{width:"100%",height:undefined,paddingTop:StatusBar.currentHeight}}>
+        <Header />
+        </View>
       <FlatList
         data={this.state.images}
         numColumns={1}
@@ -36,6 +41,7 @@ export default class ImageDetails extends Component<Props,State> {
         keyExtractor={(item) => item.id.toString()}
         renderItem={(item) => this.loadImage(item)}
       />
+      </View>
     );
   }
   loadImage = (item) => {
