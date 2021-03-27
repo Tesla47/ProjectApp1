@@ -1,22 +1,30 @@
-import { createAppContainer, createDrawerNavigator } from "react-navigation";
+import { createAppContainer, createSwitchNavigator } from "react-navigation";
 import { createStackNavigator } from "react-navigation-stack";
 import { Platform } from "react-native";
+import {createDrawerNavigator} from 'react-navigation-drawer';
 
 import HomeScreen from '../screens/Homescreen';
 import ImageDetails from "../screens/Image_details";
-import drawer from "../components/drawer";
-
+import drawer from "../navigation/drawer";
 
 const MiniaturesNavigator = createStackNavigator(
   {
-    Home: HomeScreen,
+    
+    Home: drawer,
+    "Home Screen": HomeScreen,
     "Image Details": ImageDetails,
-    Drawer: drawer,
   },
   {
     defaultNavigationOptions: {
       headerTitleAlign: "center",
+      header: (null)
     },
   }
 );
 export default createAppContainer (MiniaturesNavigator);
+
+// export default createAppContainer (
+//   createStackNavigator ({
+//     Main: drawer
+//   })
+// );

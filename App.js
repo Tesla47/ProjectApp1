@@ -1,9 +1,12 @@
-import { StatusBar } from 'expo-status-bar';
-import React, {useState} from 'react';
-import { StyleSheet, Text, View, Image, FlatList} from 'react-native';
 
-import drawer from "./components/drawer";
+import React from 'react';
+import {LogBox} from 'react-native';
 import MiniaturesNavigator from './navigation/MiniaturesNavigator';
+
+
+LogBox.ignoreLogs([
+  `Your project is accessing the following APIs from a deprecated global rather than a module import: Constants (expo-constants).`,
+]);
 
 export default function App() {
   

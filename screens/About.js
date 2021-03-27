@@ -1,14 +1,20 @@
-import React from "react";
+import React, { Component, useState } from "react";
 import { StyleSheet, Text, View } from "react-native";
 
+export default class About extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
 
-const About = (props) => {
-  return (
-    <View style={styles.homescreen}>
-      <Text>About</Text>
-    </View>
-  );
-};
+  render (){
+    return (
+      <View style={styles.homescreen}>
+        <Text>About</Text>
+      </View>
+    );
+  };
+}
 
 const styles = StyleSheet.create({
   homescreen: {
@@ -18,4 +24,3 @@ const styles = StyleSheet.create({
   },
 });
 
-export default About;

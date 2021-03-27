@@ -1,5 +1,4 @@
-import { StatusBar } from "expo-status-bar";
-import React, {Component, useState } from "react";
+import React, {Component,  } from "react";
 import Icon from "react-native-vector-icons/FontAwesome";
 
 import {
@@ -11,6 +10,10 @@ import {
   Dimensions,
   TouchableOpacity,
 } from "react-native";
+
+import Header from '../components/Header';
+import { StatusBar } from "expo-status-bar";
+
 
 var loadImageCount = 6;
 export default class  PicFlatlist extends Component {
@@ -44,6 +47,7 @@ export default class  PicFlatlist extends Component {
           { url: require("../assets/pic_23.jpg"), id: 23 },
           { url: require("../assets/pic_24.jpg"), id: 24 },
         ]
+        
      }
    }
 
@@ -51,6 +55,13 @@ export default class  PicFlatlist extends Component {
       var ImageCount = this.state.loadImageCount + 12;
       this.setState({ loadImageCount: ImageCount });
    }
+
+  static navigationOptions = () => {
+      return {
+        header: (null),
+      };
+      
+    }
   renderFooter = () => {
     if(this.state.loadImageCount < this.state.images.length){
       return (
@@ -73,40 +84,45 @@ export default class  PicFlatlist extends Component {
   }
   render(){
   return (
-    <View style={styles.outerContainer}>
-      <FlatList
-        data={this.state.images.slice(0,this.state.loadImageCount)}
-        key={"2"}
-        numColumns={2}
-        contentContainerStyle={styles.homescreen}
-        keyExtractor={(item) => item.id.toString()}
-        ListFooterComponent={this.renderFooter}
-        renderItem={({ item }) => (
-          <TouchableOpacity
-            activeOpacity={0.8}
-            onPress={() =>
-              this.props.navigation.navigate("Image Details", {
-                SelectedImage: [item],
-              })
-            }
-          >
-            <Image
-              source={item.url}
-              style={{
-                width: Dimensions.get("window").width * 0.45,
-                height: Dimensions.get("window").width * 0.55,
-                borderWidth: 2,
-                borderColor: "white",
-                resizeMode: "cover",
-                marginVertical: Dimensions.get("window").width * 0.02,
-                marginHorizontal: Dimensions.get("window").width * 0.02,
-              }}
-            />
-          </TouchableOpacity>
-        )}
-      />
+    <View >
+      <View style={{width:"100%",height:undefined,paddingTop:StatusBar.currentHeight}}>
+        <Header />
+      </View>
+      <View style={styles.outerContainer}>
+        <FlatList
+          data={this.state.images.slice(0, this.state.loadImageCount)}
+          key={"2"}
+          numColumns={2}
+          contentContainerStyle={styles.homescreen}
+          keyExtractor={(item) => item.id.toString()}
+          ListFooterComponent={this.renderFooter}
+          renderItem={({ item }) => (
+            <TouchableOpacity
+              activeOpacity={0.8}
+              onPress={() =>
+                this.props.navigation.navigate("Image Details", {
+                  SelectedImage: [item],
+                })
+              }
+            >
+              <Image
+                source={item.url}
+                style={{
+                  width: Dimensions.get("window").width * 0.45,
+                  height: Dimensions.get("window").width * 0.55,
+                  borderWidth: 2,
+                  borderColor: "white",
+                  resizeMode: "cover",
+                  marginVertical: Dimensions.get("window").width * 0.02,
+                  marginHorizontal: Dimensions.get("window").width * 0.02,
+                }}
+              />
+            </TouchableOpacity>
+          )}
+        />
+      </View>
     </View>
-  )};
+  );};
 }
 
 const styles = StyleSheet.create({
@@ -118,6 +134,7 @@ const styles = StyleSheet.create({
   },
   outerContainer: {
     position: "relative",
+    // marginTop: Dimensions.get('window').height * 0.1
   },
   buttonRow: {
     margin: 15,
