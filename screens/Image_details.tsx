@@ -1,47 +1,52 @@
-import { StatusBar } from 'expo-status-bar';
-import React, { Component, useState } from 'react';
+import { StatusBar } from "expo-status-bar";
+import React, { Component, useState } from "react";
 import {
   StyleSheet,
   Text,
   View,
   Image,
   FlatList,
-  Dimensions
-} from 'react-native';
+  Dimensions,
+} from "react-native";
 
 import { NavigationStackProp } from "react-navigation-stack";
-import Header from '../components/Header';
-import BackHeader from '../components/BackHeader';
-
+import Header from "../components/Header";
+import BackHeader from "../components/BackHeader";
 
 var count = 0;
-interface Props{
-    navigation: NavigationStackProp
+interface Props {
+  navigation: NavigationStackProp;
 }
-interface State{
-    images: any
+interface State {
+  images: any;
 }
-export default class ImageDetails extends Component<Props,State> {
+export default class ImageDetails extends Component<Props, State> {
   constructor(props) {
     super(props);
     this.state = {
-        images: this.props.navigation.getParam("SelectedImage")
+      images: this.props.navigation.getParam("SelectedImage"),
     };
   }
-  
-  render ()  {
+
+  static navigationOptions = () => {
+    return {
+      header: null,
+    };
+  };
+
+  render() {
     return (
       <View>
-      <View style={{width:"100%",height:undefined}}> //,paddingTop:StatusBar.currentHeight
-        <BackHeader />
+        <View style={{ width: "100%", height: undefined }}>
+          <BackHeader />
         </View>
-      <FlatList
-        data={this.state.images}
-        numColumns={1}
-        contentContainerStyle={styles.homescreen}
-        keyExtractor={(item) => item.id.toString()}
-        renderItem={(item) => this.loadImage(item)}
-      />
+        <FlatList
+          data={this.state.images}
+          numColumns={1}
+          contentContainerStyle={styles.homescreen}
+          keyExtractor={(item) => item.id.toString()}
+          renderItem={(item) => this.loadImage(item)}
+        />
       </View>
     );
   }
@@ -52,11 +57,11 @@ export default class ImageDetails extends Component<Props,State> {
           source={item.item.url}
           style={{
             width: Dimensions.get("window").width * 0.99,
-            height: Dimensions.get("window").height * 0.73,
+            height: Dimensions.get("window").height * 0.70,
             borderWidth: 2,
             borderColor: "white",
             resizeMode: "cover",
-            marginVertical: Dimensions.get("window").width * 0.02,
+            marginVertical: Dimensions.get("window").width * 0.13,
             marginHorizontal: Dimensions.get("window").width * 0.02,
           }}
         />
@@ -70,7 +75,7 @@ const styles = StyleSheet.create({
     position: "relative",
     width: Dimensions.get("window").width,
     alignItems: "center",
-    alignSelf: 'center',
+    alignSelf: "center",
     justifyContent: "center",
   },
 });

@@ -8,7 +8,11 @@ class Header extends React.Component {
   render() {
     return (
       <View style={styles.header}>
-        <StatusBar  barStyle="light-content" backgroundColor="transparent" translucent={true} />
+        <StatusBar
+          barStyle="light-content"
+          backgroundColor="transparent"
+          translucent={true}
+        />
         <DrawerTrigger />
       </View>
     );
@@ -18,10 +22,14 @@ class Header extends React.Component {
 const styles = StyleSheet.create({
   header: {
     position: "relative",
-    top: Dimensions.get('window').height * 0.05 ,
+    top: Dimensions.get("window").height * 0.05,
     height: undefined,
-    width:"100%",
-    backgroundColor: 'white'
+    width: "100%",
+    backgroundColor: "white",
+    shadowRadius: 6,
+    elevation: 8,
+    padding: 5,
+    borderRadius: 10,
   },
 });
 

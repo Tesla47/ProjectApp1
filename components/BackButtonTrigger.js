@@ -3,8 +3,8 @@ import { TouchableOpacity, StyleSheet } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { withNavigation } from "react-navigation";
 
-import { DrawerActions } from "react-navigation-drawer";
-import HomeScreen from '../screens/Homescreen';
+import HomeScreen from "../screens/Homescreen";
+import About from '../screens/About';
 
 class ButtonTrigger extends React.Component {
   render() {
@@ -12,7 +12,7 @@ class ButtonTrigger extends React.Component {
       <TouchableOpacity
         style={styles.trigger}
         onPress={() => {
-          this.props.navigation.navigate(HomeScreen);
+          props.navigation.navigate('HomeScreen');
         }}
       >
         <Ionicons name="arrow-back" size={35} color={"grey"} />

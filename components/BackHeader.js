@@ -2,7 +2,7 @@ import { StatusBar } from "expo-status-bar";
 import React from "react";
 import { View, StyleSheet, Dimensions } from "react-native";
 
-import ButtonTrigger from "./ButtonTrigger";
+import BackButtonTrigger from "./BackButtonTrigger";
 
 class BackHeader extends React.Component {
   render() {
@@ -13,7 +13,7 @@ class BackHeader extends React.Component {
           backgroundColor="transparent"
           translucent={true}
         />
-        <ButtonTrigger />
+        <BackButtonTrigger />
       </View>
     );
   }
@@ -26,6 +26,10 @@ const styles = StyleSheet.create({
     height: undefined,
     width: "100%",
     backgroundColor: "white",
+    shadowRadius: 6,
+    elevation: 8,
+    padding: 5,
+    borderRadius: 10,
   },
 });
 
