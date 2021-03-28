@@ -23,8 +23,3 @@ const MiniaturesNavigator = createStackNavigator(
 );
 export default createAppContainer (MiniaturesNavigator);
 
-// export default createAppContainer (
-//   createStackNavigator ({
-//     Main: drawer
-//   })
-// );
