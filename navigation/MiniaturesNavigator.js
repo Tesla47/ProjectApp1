@@ -17,7 +17,7 @@ const MiniaturesNavigator = createStackNavigator(
   {
     defaultNavigationOptions: {
       headerTitleAlign: "center",
-      header: (null)
+      headerShown: false
     },
   }
 );

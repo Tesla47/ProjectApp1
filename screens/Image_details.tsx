@@ -11,6 +11,7 @@ import {
 
 import { NavigationStackProp } from "react-navigation-stack";
 import Header from '../components/Header';
+import BackHeader from '../components/BackHeader';
 
 
 var count = 0;
@@ -31,8 +32,8 @@ export default class ImageDetails extends Component<Props,State> {
   render ()  {
     return (
       <View>
-      <View style={{width:"100%",height:undefined,paddingTop:StatusBar.currentHeight}}>
-        <Header />
+      <View style={{width:"100%",height:undefined}}> //,paddingTop:StatusBar.currentHeight
+        <BackHeader />
         </View>
       <FlatList
         data={this.state.images}

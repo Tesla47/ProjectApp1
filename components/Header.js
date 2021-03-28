@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
   header: {
     position: "relative",
     top: Dimensions.get('window').height * 0.05 ,
-    height: Dimensions.get('window').height * 0.1,
+    height: undefined,
     width:"100%",
     backgroundColor: 'white'
   },

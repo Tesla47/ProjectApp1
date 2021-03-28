@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Text} from 'react-native';
+import {View, Text, StyleSheet} from 'react-native';
 import {createDrawerNavigator} from 'react-navigation-drawer';
 import {createAppContainer} from 'react-navigation';
 
@@ -23,7 +23,19 @@ const DrawerNavigator = createDrawerNavigator({
   About: {
     screen: About,
   },
+ 
 });
 
+const DrawerProps = (props) => {
+  return (
+    <View>
+      <Text>Miniatures</Text>
+    </View>
+  );
+};
+
+const styles = StyleSheet.create({
+
+});
 
 export default createAppContainer( DrawerNavigator); 
