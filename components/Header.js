@@ -13,6 +13,9 @@ class Header extends React.Component {
           backgroundColor="transparent"
           translucent={true}
         />
+        <View style={styles.headerStyling}>
+          <Text style={{ fontSize: 18, fontWeight:'bold' }}>Afghanistan's Medieval Art</Text>
+        </View>
         <DrawerTrigger />
       </View>
     );
@@ -30,6 +33,14 @@ const styles = StyleSheet.create({
     elevation: 8,
     padding: 5,
     borderRadius: 10,
+  },
+  headerStyling: {
+    alignItems: "center",
+    alignContent: "center",
+    position: 'absolute',
+    margin: 13,
+    alignSelf: "center",
+    justifyContent: "center",
   },
 });
 

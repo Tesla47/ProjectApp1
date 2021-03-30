@@ -38,7 +38,7 @@ export default class ImageDetails extends Component<Props, State> {
     return (
       <View>
         <View style={{ width: "100%", height: undefined }}>
-          <BackHeader />
+          <BackHeader navigation={this.props.navigation} />
         </View>
         <FlatList
           data={this.state.images}

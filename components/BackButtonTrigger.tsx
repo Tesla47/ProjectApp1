@@ -1,18 +1,31 @@
 import React from "react";
-import { TouchableOpacity, StyleSheet } from "react-native";
+import {
+  TouchableOpacity,
+  StyleSheet,
+  ProgressViewIOSComponent,
+} from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { withNavigation } from "react-navigation";
-
+import { NavigationStackProp } from "react-navigation-stack";
 import HomeScreen from "../screens/Homescreen";
-import About from '../screens/About';
+import About from "../screens/About";
 
-class ButtonTrigger extends React.Component {
+
+interface Props {
+  navigation: NavigationStackProp;
+}
+interface State {}
+class BackButtonTrigger extends React.Component<Props, State> {
+  constructor(props: Props) {
+    super(props);
+  }
   render() {
     return (
       <TouchableOpacity
         style={styles.trigger}
         onPress={() => {
-          props.navigation.navigate('HomeScreen');
+          
+          this.props.navigation.goBack();
         }}
       >
         <Ionicons name="arrow-back" size={35} color={"grey"} />
@@ -20,11 +33,9 @@ class ButtonTrigger extends React.Component {
     );
   }
 }
-
 const styles = StyleSheet.create({
   trigger: {
     marginLeft: 10,
   },
 });
-
-export default withNavigation(ButtonTrigger);
+export default BackButtonTrigger;
