@@ -1,5 +1,5 @@
 import React from "react";
-import { TouchableOpacity, StyleSheet } from "react-native";
+import { TouchableOpacity, StyleSheet, View } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { withNavigation } from "react-navigation";
 import { DrawerActions } from "react-navigation-drawer";
@@ -13,7 +13,9 @@ class DrawerTrigger extends React.Component {
           this.props.navigation.dispatch(DrawerActions.openDrawer());
         }}
       >
-        <Ionicons name="menu-sharp" size={35} color={"grey"} />
+        <View>
+          <Ionicons name="menu-sharp" size={35} color={"grey"} />
+        </View>
       </TouchableOpacity>
     );
   }

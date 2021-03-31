@@ -31,7 +31,9 @@ class BackHeader extends React.Component<Props,State> {
             this.props.navigation.goBack();
           }}
         >
-          <Ionicons name="arrow-back" size={35} color={"grey"} />
+          <View style={{ width: 40, height: 40 }}>
+            <Ionicons name="arrow-back" size={35} color={"grey"} />
+          </View>
         </TouchableOpacity>
       </View>
     );
