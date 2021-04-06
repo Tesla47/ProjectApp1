@@ -22,8 +22,8 @@ const DrawerNavigator = createDrawerNavigator({
   },
   About: {
     screen: About,
-  },
- 
+  }, 
+    
 });
 
 const DrawerProps = (props) => {

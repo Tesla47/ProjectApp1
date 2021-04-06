@@ -57,15 +57,16 @@ export default class ImageDetails extends Component<Props, State> {
           source={item.item.url}
           style={{
             width: Dimensions.get("window").width * 0.99,
-            height: Dimensions.get("window").height * 0.70,
+            height: Dimensions.get("window").height * 0.7,
             borderWidth: 2,
             borderColor: "white",
             resizeMode: "cover",
-            marginVertical: Dimensions.get("window").width * 0.13,
+            marginVertical: Dimensions.get("window").width * 0.1,
             marginHorizontal: Dimensions.get("window").width * 0.02,
           }}
         />
-        <Text>Miniature Description</Text>
+        <Text>{item.item.title}</Text>
+        <Text>{item.item.description}</Text>
       </View>
     );
   };

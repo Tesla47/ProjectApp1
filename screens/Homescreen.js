@@ -23,8 +23,8 @@ export default class PicFlatlist extends Component {
     this.state = {
       loadImageCount: 6,
       images: [
-        { url: require("../assets/pic_1.jpg"), id: 1 },
-        { url: require("../assets/pic_2.jpg"), id: 2 },
+        { url: require("../assets/pic_1.jpg"), id: 1, title: 'cool image #1', description: 'Some people sitting in a garden'},
+        { url: require("../assets/pic_2.jpg"), id: 2, title: 'cool image #2', description: 'Some people sitting in a garden'},
         { url: require("../assets/pic_3.jpg"), id: 3 },
         { url: require("../assets/pic_4.jpg"), id: 4 },
         { url: require("../assets/pic_5.jpg"), id: 5 },

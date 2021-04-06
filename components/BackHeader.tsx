@@ -43,14 +43,14 @@ class BackHeader extends React.Component<Props,State> {
 const styles = StyleSheet.create({
   header: {
     position: "relative",
-    top: Dimensions.get("window").height * 0.05,
+    top: Dimensions.get("window").height * 0.04,
     height: undefined,
     width: "100%",
     backgroundColor: "white",
     shadowRadius: 6,
     elevation: 8,
     padding: 5,
-    borderRadius: 10,
+    borderRadius: 2,
   },
   trigger: {
     marginLeft: 10,
