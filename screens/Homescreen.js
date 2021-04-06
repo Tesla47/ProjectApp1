@@ -15,6 +15,7 @@ import {
 import Header from "../components/Header";
 import BackHeader from "../components/BackHeader";
 import BackButtonTrigger from "../components/BackButtonTrigger";
+import  {ImageData} from "../data/captionsArray";
 
 var loadImageCount = 6;
 export default class PicFlatlist extends Component {
@@ -23,8 +24,18 @@ export default class PicFlatlist extends Component {
     this.state = {
       loadImageCount: 6,
       images: [
-        { url: require("../assets/pic_1.jpg"), id: 1, title: 'cool image #1', description: 'Some people sitting in a garden'},
-        { url: require("../assets/pic_2.jpg"), id: 2, title: 'cool image #2', description: 'Some people sitting in a garden'},
+        {
+          url: require("../assets/pic_1.jpg"),
+          id: 1,
+          title: ImageData["image1"].title,
+          description: ImageData["image1"].description,
+        },
+        {
+          url: require("../assets/pic_2.jpg"),
+          id: 2,
+          title: "cool image #2",
+          description: "Some people sitting in a garden",
+        },
         { url: require("../assets/pic_3.jpg"), id: 3 },
         { url: require("../assets/pic_4.jpg"), id: 4 },
         { url: require("../assets/pic_5.jpg"), id: 5 },
