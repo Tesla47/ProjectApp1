@@ -1,35 +1,48 @@
+import AsyncStorage from "@react-native-community/async-storage";
 import React, { useState } from "react";
-import { StyleSheet, Text, View, Image, TouchableOpacity } from "react-native";
+import { StyleSheet, Text, View, Image, TouchableOpacity,  } from "react-native";
+import HomeScreen from '../screens/Homescreen';
 
-export default function SplashScreen() {
+export default function SplashScreen(props) {
   const [currentStep, setCurrentStep] = useState(0);
   const [steps, setSteps] = useState([
-    
     {
-      image: require("../assets/pic_1.jpg"),
-      title: "Easy To Search",
-      description: "Afghanistan Art",
+      image: require("../assets/SplashScreen_image_1.gif"),
+      backgroundColor: "#d7e0eb",
+      // title: "Culture Preserving",
+      // description: `The Goal of our App is to preserve the fragile history of Afghanistan by using modern technologies. This will help us to have a compact, easy to use interface for our cultural heritage.`,
     },
     {
-      image: require("../assets/pic_2.jpg"),
-      title: "Easy To Access",
-      description: "Afghanistan Art",
+      image: require("../assets/SplashScreen_image_2.gif"),
+      backgroundColor: "#d4b88c",
+      // title: "Easy To Use",
+      // description: `This Application is design with the idea in mind to make as easy to access and easy to use. No internet required after downloading and no registration needed`,
     },
     {
-      image: require("../assets/pic_3.jpg"),
-      title: "Easy To Manage",
-      description: "Afghanistan Art",
+      image: require("../assets/SplashScreen_image_3.gif"),
+      // title: "Getting Started",
+      backgroundColor: "#69aabb",
+      // description: `The next screen includes all the catalogue in detail. You can sort and search for a particular miniature through the main window. Also, you can use categories and settings to personalize the app to your taste. Enjoy`,
     },
   ]);
-  const nextStep = () => {
+  const nextStep = async () => {
     setCurrentStep(currentStep >= 2 ? 2 : currentStep + 1);
+    if (currentStep >= 2) {
+      await AsyncStorage.setItem("firstReview","1")
+      props.navigation.navigate({ routeName: "Home" });
+      
+    }
   };
 
   const prevStep = () => {
     setCurrentStep(currentStep <= 0 ? 0 : currentStep - 1);
   };
+
+
   return (
-    <View style={styles.container}>
+    <View
+      style={[styles.container, { backgroundColor: steps[currentStep]["backgroundColor"]}]}
+    >
       <Image
         source={steps[currentStep].image}
         style={styles.stepImage}
@@ -39,6 +52,7 @@ export default function SplashScreen() {
         {steps.map((step, index) => {
           return (
             <View
+              key={Math.random()}
               style={{
                 ...styles.stepIndicator,
                 width: currentStep === index ? 40 : 30,
@@ -84,13 +98,12 @@ export default function SplashScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
     alignItems: "center",
     justifyContent: "center",
   },
   stepImage: {
-    width: "90%",
-    height: "50%",
+    width: "95%",
+    height: "70%",
     marginVertical: 30,
   },
   stepIndicatorView: {
