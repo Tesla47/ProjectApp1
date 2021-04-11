@@ -26,8 +26,10 @@ class BackHeader extends React.Component<Props,State> {
       <View style={styles.header}>
         <StatusBar backgroundColor="transparent" translucent={true} />
         <TouchableOpacity
+          activeOpacity={0.8}
           style={styles.trigger}
           onPress={() => {
+            //console.log("************clicked");
             this.props.navigation.goBack();
           }}
         >
