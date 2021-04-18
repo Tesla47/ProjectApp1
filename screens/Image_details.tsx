@@ -1,4 +1,3 @@
-import { StatusBar } from "expo-status-bar";
 import React, { Component, useState } from "react";
 
 import {
@@ -12,7 +11,6 @@ import {
 } from "react-native";
 
 import { NavigationStackProp } from "react-navigation-stack";
-import Header from "../components/Header";
 import BackHeader from "../components/BackHeader";
 import { ScrollView } from "react-native-gesture-handler";
 import { ImageData } from "../data/captionsArray";

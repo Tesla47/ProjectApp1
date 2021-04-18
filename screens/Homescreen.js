@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { StatusBar } from "expo-status-bar";
 import Icon from "react-native-vector-icons/FontAwesome";
-import Swiper from "react-native-swipe-image";
 
 import {
   StyleSheet,
@@ -14,7 +13,7 @@ import {
 } from "react-native";
 
 import Header from "../components/Header";
-import  {ImageData} from "../data/captionsArray";
+import { ImageData } from "../data/captionsArray";
 
 var loadImageCount = 6;
 export default class PicFlatlist extends Component {
@@ -136,7 +135,7 @@ export default class PicFlatlist extends Component {
             renderItem={({ item }) => (
               <TouchableOpacity
                 activeOpacity={0.8}
-                onPress={() =>
+                onPress={({}) =>
                   this.props.navigation.navigate("Image Details", {
                     SelectedImage: [this.state.images],
                   })
