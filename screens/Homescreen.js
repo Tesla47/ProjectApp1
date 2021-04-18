@@ -133,7 +133,7 @@ export default class PicFlatlist extends Component {
             keyExtractor={(item) => item.id.toString()}
             ListFooterComponent={this.renderFooter}
             renderItem={({ item }) => (
-              <TouchableOpacity
+              <TouchableOpacity 
                 activeOpacity={0.8}
                 onPress={({}) =>
                   this.props.navigation.navigate("Image Details", {
