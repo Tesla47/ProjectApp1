@@ -22,9 +22,11 @@ interface Props {
 }
 interface State {
   images: any,
-  selectedImage: any
+  selectedImage: any,
 }
 export default class ImageDetails extends Component<Props, State> {
+  viewY : any = {}
+  scrollView : any
   constructor(props) {
     super(props);
     this.state = {
@@ -88,7 +90,7 @@ export default class ImageDetails extends Component<Props, State> {
         { url: require("../assets/pic_47.jpg"), id: 47 },
        
       ],
-       selectedImage:this.props.navigation.getParam("SelectedImage")
+       selectedImage:this.props.navigation.getParam("SelectedImage"),
     };
   }
 
@@ -98,19 +100,33 @@ export default class ImageDetails extends Component<Props, State> {
     };
   };
 
+  async componentDidMount(){
+    console.log(this.state.selectedImage.id);
+    console.log(this.viewY);
+    await this.scrollTo()
+  }
+
+  scrollTo = async () => {
+    setTimeout(async () => {
+      this.scrollView.scrollTo({
+        x: this.viewY[this.state.selectedImage.id],
+        y: 0,
+        animated: true,
+      });
+    }, 50);
+
+  }
+
   getAllImages = () => {
     var arr = []
     console.log(this.state.selectedImage.id,"*********")
     var sId = this.state.selectedImage.id;
     this.state.images.forEach(element => {
+      var image = this.loadImage(element);
+      arr.push(image);
       
-      if(sId <= element.id)
-      {
-          var image = this.loadImage(element);
-          arr.push(image);
-      }
-
     });
+    console.log("rendered..")
     return arr;
   }
   
@@ -119,15 +135,18 @@ export default class ImageDetails extends Component<Props, State> {
     return (
       <View>
           <BackHeader navigation={this.props.navigation} />
-        <ScrollView showsHorizontalScrollIndicator = {false} pagingEnabled horizontal>
+        <ScrollView ref={(view) => {this.scrollView = view}} showsHorizontalScrollIndicator = {false} pagingEnabled horizontal>
           {this.getAllImages()}
         </ScrollView>
       </View>
     );
   }
+  setViewY = (key,layout) =>{
+    this.viewY[key] = layout;
+  }
   loadImage = (item) => {
     return (
-      <View style={styles.homescreen} key={item.id}>
+      <View style={styles.homescreen} key={item.id} onLayout={(event) => {const layout = event.nativeEvent.layout;this.setViewY(item.id,layout.x)}}>
           <Image
             source={item.url}
             style={{
