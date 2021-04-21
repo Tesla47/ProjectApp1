@@ -137,7 +137,7 @@ export default class PicFlatlist extends Component {
                 activeOpacity={0.8}
                 onPress={({}) =>
                   this.props.navigation.navigate("Image Details", {
-                    SelectedImage: [this.state.images],
+                    SelectedImage: item,
                   })
                 }
               >
