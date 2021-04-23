@@ -12,7 +12,6 @@ import {
 import { NavigationStackProp } from "react-navigation-stack";
 import BackHeader from "../components/BackHeader";
 import { ScrollView } from "react-native-gesture-handler";
-import { ImageData } from "../data/captionsArray";
 import { images } from "../data/ImagesList";
 
 var count = 0;
@@ -51,7 +50,7 @@ export default class ImageDetails extends Component<Props, State> {
         y: 0,
         animated: true,
       });
-    }, 50);
+    }, 100);
   };
 
   getAllImages = () => {
@@ -109,6 +108,7 @@ export default class ImageDetails extends Component<Props, State> {
             resizeMode: "cover",
             marginVertical: Dimensions.get("window").width * 0.1,
             marginHorizontal: Dimensions.get("window").width * 0.02,
+            
           }}
         />
         <Text>{item.title}</Text>
@@ -122,6 +122,6 @@ const styles = StyleSheet.create({
     position: "relative",
     width: Dimensions.get("window").width,
     height: Dimensions.get("screen").height,
-
+    
   },
 });

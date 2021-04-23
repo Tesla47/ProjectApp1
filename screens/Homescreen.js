@@ -13,7 +13,6 @@ import {
 } from "react-native";
 
 import Header from "../components/Header";
-import { ImageData } from "../data/captionsArray";
 import { images } from "../data/ImagesList";
 
 var loadImageCount = 6;
