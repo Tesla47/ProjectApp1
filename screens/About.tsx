@@ -35,6 +35,7 @@ export default class About extends Component<Props, State> {
     };
   }
 
+
   static navigationOptions = () => {
     return {
       header: null,
@@ -51,7 +52,14 @@ export default class About extends Component<Props, State> {
           animated: true,
         });
       }, 100);
-    this.scrolledId = this.scrolledId + 1;
+      console.log(this.scrolledId,"********")
+      if(this.scrolledId === (this.state.images.length)){
+        this.scrolledId = 1;
+      }
+      else{
+        this.scrolledId = this.scrolledId + 1;
+      }
+    
   };
 
   getAllImages = () => {
@@ -78,7 +86,7 @@ export default class About extends Component<Props, State> {
         >
           {this.getAllImages()}
         </ScrollView>
-        {this.scrolledId <= this.state.images.length && 
+        {this.scrolledId <= this.state.images.length - 1 && (
           <View style={styles.bottomButton}>
             <View
               style={{
@@ -101,7 +109,7 @@ export default class About extends Component<Props, State> {
               ></Icon.Button>
             </View>
           </View>
-        }
+        )}
       </View>
     );
   }
@@ -127,8 +135,8 @@ export default class About extends Component<Props, State> {
         <Image
           source={item.url}
           style={{
-            width: Dimensions.get("window").width * 0.99,
-            height: Dimensions.get("window").height * 0.7,
+            width: 80,
+            height: 80,
             borderWidth: 2,
             borderColor: "white",
             resizeMode: "cover",
