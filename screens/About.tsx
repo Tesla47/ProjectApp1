@@ -1,13 +1,5 @@
 import React, { Component, useState } from "react";
-import {
-  StyleSheet,
-  Text,
-  View,
-  Image,
-  Dimensions,
-  Button,
-  ProgressViewIOSComponent,
-} from "react-native";
+import { StyleSheet, Text, View, Image, Dimensions } from "react-native";
 import { NavigationStackProp } from "react-navigation-stack";
 import { images } from "../data/AboutPageImages";
 import { ScrollView } from "react-native-gesture-handler";
@@ -19,8 +11,7 @@ interface Props {
 }
 interface State {
   images: any;
-  id: number
-  
+  id: number;
 }
 
 export default class About extends Component<Props, State> {
@@ -35,7 +26,6 @@ export default class About extends Component<Props, State> {
     };
   }
 
-
   static navigationOptions = () => {
     return {
       header: null,
@@ -45,21 +35,19 @@ export default class About extends Component<Props, State> {
   async componentDidMount() {}
 
   scrollTo = () => {
-      setTimeout(async () => {
-        this.scrollView.scrollTo({
-          x: 0,
-          y: this.viewY[this.scrolledId],
-          animated: true,
-        });
-      }, 100);
-      console.log(this.scrolledId,"********")
-      if(this.scrolledId === (this.state.images.length)){
-        this.scrolledId = 1;
-      }
-      else{
-        this.scrolledId = this.scrolledId + 1;
-      }
-    
+    setTimeout(async () => {
+      this.scrollView.scrollTo({
+        x: 0,
+        y: this.viewY[this.scrolledId],
+        animated: true,
+      });
+    }, 100);
+
+    if (this.scrolledId === this.state.images.length) {
+      this.scrolledId = 1;
+    } else {
+      this.scrolledId = this.scrolledId + 1;
+    }
   };
 
   getAllImages = () => {
@@ -81,6 +69,7 @@ export default class About extends Component<Props, State> {
           ref={(view) => {
             this.scrollView = view;
           }}
+          scrollEnabled={false}
           showsHorizontalScrollIndicator={false}
           pagingEnabled
         >
@@ -119,13 +108,8 @@ export default class About extends Component<Props, State> {
   };
   loadImage = (item) => {
     return (
-      <ScrollView
+      <View
         style={styles.homescreen}
-        contentContainerStyle={{
-          alignItems: "center",
-          alignSelf: "center",
-          justifyContent: "center",
-        }}
         key={item.id}
         onLayout={(event) => {
           const layout = event.nativeEvent.layout;
@@ -135,8 +119,8 @@ export default class About extends Component<Props, State> {
         <Image
           source={item.url}
           style={{
-            width: 80,
-            height: 80,
+            width: Dimensions.get("window").width * 0.99,
+            height: Dimensions.get("window").height * 0.4,
             borderWidth: 2,
             borderColor: "white",
             resizeMode: "cover",
@@ -144,9 +128,21 @@ export default class About extends Component<Props, State> {
             marginHorizontal: Dimensions.get("window").width * 0.02,
           }}
         />
-        <Text>{item.title}</Text>
-        <Text>{item.description}</Text>
-      </ScrollView>
+        <View style={styles.TitleTextStyling}>
+          <Text
+            style={{ fontWeight: "bold", fontSize: 20, textAlign: "justify" }}
+          >
+            {item.title}
+          </Text>
+        </View>
+        <View style={styles.DescriptionTextStyling}>
+          <Text
+            style={{ fontWeight:"normal", textAlign: "center" }}
+          >
+            {item.description}
+          </Text>
+        </View>
+      </View>
     );
   };
 }
@@ -155,16 +151,35 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   homescreen: {
-    paddingTop: 50,
+    paddingTop: 10,
     paddingLeft: 10,
     paddingRight: 10,
     backgroundColor: "white",
     marginHorizontal: 5,
+    alignItems: "center",
+    justifyContent: "flex-start",
+    width: Dimensions.get("window").width,
+    height: Dimensions.get("window").height,
   },
   bottomButton: {
     flex: 1,
     justifyContent: "flex-end",
     alignItems: "center",
     marginBottom: 36,
+  },
+  TitleTextStyling: {
+    justifyContent: "center",
+    alignItems: "center",
+    alignSelf: "center",
+    textAlign: "center",
+    backgroundColor: "yellow",
+  },
+  DescriptionTextStyling: {
+    justifyContent: "center",
+    alignContent: "center",
+    alignItems: "center",
+    alignSelf: "center",
+    textAlign: "center",
+    backgroundColor: "white",
   },
 });

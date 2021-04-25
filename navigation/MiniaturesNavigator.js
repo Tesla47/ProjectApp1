@@ -10,7 +10,7 @@ import SplashScreen from '../screens/SplashScreen';
 
 const MiniaturesNavigator = createStackNavigator(
   {
-    // SplashScreen: SplashScreen,
+    //SplashScreen: SplashScreen,
     Home: drawer,
     "Home Screen": HomeScreen,
     "Image Details": ImageDetails,
