@@ -62,7 +62,7 @@ export default class About extends Component<Props, State> {
   render() {
     return (
       <View style={styles.container}>
-        <View>
+        <View >
           <Header />
         </View>
         <ScrollView
@@ -182,4 +182,5 @@ const styles = StyleSheet.create({
     textAlign: "center",
     backgroundColor: "white",
   },
+  
 });
