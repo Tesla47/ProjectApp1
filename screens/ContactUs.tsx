@@ -1,12 +1,11 @@
 import React from "react";
-import {
-  StyleSheet,
-  Text,
-  View,
-  Linking,
-} from "react-native";
+import { StyleSheet, Text, View, Linking } from "react-native";
 import Header from "../components/Header";
-import Icon from "react-native-vector-icons/FontAwesome";
+import Icon from "react-native-vector-icons/FontAwesome5";
+
+
+const Separator = () => <View style={styles.separator} />;
+
 
 const ContactUs = (props) => {
   return (
@@ -24,6 +23,7 @@ const ContactUs = (props) => {
               name="envelope"
               raised={true}
               backgroundColor="#ffa500"
+              // padding={15}
               paddingLeft={8}
               paddingRight={8}
               size={30}
@@ -34,6 +34,25 @@ const ContactUs = (props) => {
               }}
             >
               <Text style={{ fontSize: 15 }}>Email us</Text>
+            </Icon.Button>
+            <Separator />
+            <Icon.Button
+              name="whatsapp"
+              raised={true}
+              backgroundColor="#ffa500"
+              // padding={15}
+              // paddingTop= {20}
+              // marginTop ={20}
+              paddingLeft={8}
+              paddingRight={8}
+              size={30}
+              onPress={() => {
+                Linking.openURL(
+                  `whatsapp://send?phone=${+93703057723}&text=${"Hi, I need help!"}`
+                );
+              }}
+            >
+              <Text style={{ fontSize: 15 }}>Contact us</Text>
             </Icon.Button>
           </View>
         </View>
@@ -76,12 +95,17 @@ const styles = StyleSheet.create({
     paddingLeft: 5,
   },
   buttonRow: {
-    width: '50%',
+    width: "100%",
     margin: 25,
-    flexDirection: "row",
+    justifyContent: "space-between",
+    flexDirection: "column",
     alignContent: "center",
     alignSelf: "center",
-    justifyContent: "center",
+  },
+  separator: {
+    marginVertical: 8,
+    borderBottomColor: "#737373",
+    borderBottomWidth: StyleSheet.hairlineWidth,
   },
 });
 

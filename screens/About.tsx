@@ -62,9 +62,7 @@ export default class About extends Component<Props, State> {
   render() {
     return (
       <View style={styles.container}>
-        <View >
-          <Header />
-        </View>
+        <Header />
         <ScrollView
           ref={(view) => {
             this.scrollView = view;
@@ -136,9 +134,7 @@ export default class About extends Component<Props, State> {
           </Text>
         </View>
         <View style={styles.DescriptionTextStyling}>
-          <Text
-            style={{ fontWeight:"normal", textAlign: "center" }}
-          >
+          <Text style={{ fontWeight: "normal", textAlign: "center" }}>
             {item.description}
           </Text>
         </View>
@@ -182,5 +178,4 @@ const styles = StyleSheet.create({
     textAlign: "center",
     backgroundColor: "white",
   },
-  
 });
