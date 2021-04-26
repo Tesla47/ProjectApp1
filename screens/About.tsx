@@ -134,7 +134,7 @@ export default class About extends Component<Props, State> {
           </Text>
         </View>
         <View style={styles.DescriptionTextStyling}>
-          <Text style={{ fontWeight: "normal", textAlign: "center" }}>
+          <Text style={{ fontWeight: "normal", textAlign: "left" }}>
             {item.description}
           </Text>
         </View>
@@ -168,7 +168,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     alignSelf: "center",
     textAlign: "center",
-    backgroundColor: "yellow",
+   
   },
   DescriptionTextStyling: {
     justifyContent: "center",
@@ -176,6 +176,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
     alignSelf: "center",
     textAlign: "center",
-    backgroundColor: "white",
+  
   },
 });
