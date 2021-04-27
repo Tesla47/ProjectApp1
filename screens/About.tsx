@@ -114,18 +114,21 @@ export default class About extends Component<Props, State> {
           this.setViewY(item.id, layout.y);
         }}
       >
-        <Image
-          source={item.url}
-          style={{
-            width: Dimensions.get("window").width * 0.99,
-            height: Dimensions.get("window").height * 0.4,
-            borderWidth: 2,
-            borderColor: "white",
-            resizeMode: "cover",
-            marginVertical: Dimensions.get("window").width * 0.1,
-            marginHorizontal: Dimensions.get("window").width * 0.02,
-          }}
-        />
+        <View style={styles.ImageView}>
+          <Image
+            source={item.url}
+            style={{
+              width: Dimensions.get("window").width * 0.99,
+              height: Dimensions.get("window").height * 0.4,
+              borderWidth: 2,
+              borderColor: "white",
+              resizeMode: "cover",
+              marginVertical: Dimensions.get("window").width * 0.1,
+              marginHorizontal: Dimensions.get("window").width * 0.02,
+              
+            }}
+          />
+        </View>
         <View style={styles.TitleTextStyling}>
           <Text
             style={{ fontWeight: "bold", fontSize: 20, textAlign: "justify" }}
@@ -147,11 +150,11 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   homescreen: {
-    paddingTop: 10,
-    paddingLeft: 10,
-    paddingRight: 10,
-    backgroundColor: "white",
-    marginHorizontal: 5,
+    // paddingTop: 10,
+    // paddingLeft: 10,
+    // paddingRight: 10,
+    // backgroundColor: "blue",
+    // marginHorizontal: 5,
     alignItems: "center",
     justifyContent: "flex-start",
     width: Dimensions.get("window").width,
@@ -168,7 +171,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     alignSelf: "center",
     textAlign: "center",
-   
+    // backgroundColor: 'yellow',
   },
   DescriptionTextStyling: {
     justifyContent: "center",
@@ -176,6 +179,9 @@ const styles = StyleSheet.create({
     alignItems: "center",
     alignSelf: "center",
     textAlign: "center",
-  
+    // backgroundColor: 'green'
+  },
+  ImageView: {
+    
   },
 });

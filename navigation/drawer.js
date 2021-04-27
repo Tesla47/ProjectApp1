@@ -8,7 +8,8 @@ import HomeScreen from '../screens/Homescreen';
 import About from "../screens/About";
 import Categories from '../screens/Categories';
 import ContactUs from '../screens/ContactUs';
-
+import BuyUsACoffee from '../screens/BuyUsACoffee';
+const Separator = () => <View style={styles.separator} />;
 
 const DrawerNavigator = createDrawerNavigator({
   "Home Screen": {
@@ -22,19 +23,26 @@ const DrawerNavigator = createDrawerNavigator({
   },
   About: {
     screen: About,
-  }, 
-    
+  },
+  "Buy Us a Coffee ": {
+    screen: BuyUsACoffee,
+  },
 });
 
-const DrawerProps = (props) => {
-  return (
-    <View>
-      <Text>Miniatures</Text>
-    </View>
-  );
-};
+// const DrawerProps = (props) => {
+//   return (
+//     <View>
+//       <Text>Miniatures</Text>
+//     </View>
+//   );
+// };
 
 const styles = StyleSheet.create({
+   separator: {
+    marginVertical: 8,
+    borderBottomColor: "#737373",
+    borderBottomWidth: StyleSheet.hairlineWidth,
+   },
 
 });
 
