@@ -74,7 +74,7 @@ const styles = StyleSheet.create({
     marginLeft: 10,
   },
   card: {
-    height: "50%",
+    height: "25%",
     alignItems: "center",
     marginRight: 5,
     marginLeft: 5,
