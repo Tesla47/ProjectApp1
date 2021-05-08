@@ -1,50 +1,104 @@
-import React from "react";
-import { Button, StyleSheet, Text, View, Linking} from "react-native";
-import Icon from "react-native-vector-icons/FontAwesome5";
-import Header from "../components/Header";
+import React, { useState } from "react";
+import { Alert, Modal, StyleSheet, Text, Pressable, View } from "react-native";
 
-const BuyUsACoffee = (props) => {
+const App = () => {
+  const [modalVisible, setModalVisible] = useState(false);
   return (
-    <View style={styles.container}>
-      <View>
-        <Header />
-      </View>
-      <View style={styles.buttonRow}>
-        <Icon.Button
-          name="coffee"
-          raised={true}
-          backgroundColor="#ffa500"
-          // padding={15}
-          paddingLeft={8}
-          paddingRight={8}
-          size={30}
-          onPress={() => {
-            Linking.openURL("https://www.buymeacoffee.com/splendor");
-          }}
-        >
-          <Text style={{ fontSize: 15 }}>Buy Us a Coffee</Text>
-        </Icon.Button>
-      </View>
+    <View style={styles.centeredView}>
+      <Modal
+        animationType="slide"
+        transparent={true}
+        visible={modalVisible}
+        onRequestClose={() => {
+          Alert.alert("Modal has been closed.");
+          setModalVisible(!modalVisible);
+        }}
+      >
+        <View style={styles.centeredView}>
+          <View style={styles.modalView}>
+            <Text style={styles.modalText}>
+              Thanks for Shopping! Do you wan to buy this product?
+            </Text>
+            <View style={styles.ButtonView}>
+              <Pressable
+                style={[styles.button, styles.buttonClose]}
+                onPress={() => setModalVisible(!modalVisible)}
+              >
+                <Text style={styles.textStyle}>Add it to my Cart</Text>
+              </Pressable>
+              <Pressable
+                style={[styles.button, styles.buttonClose]}
+                onPress={() => setModalVisible(!modalVisible)}
+              >
+                <Text style={styles.textStyle}>Yes</Text>
+              </Pressable>
+              <Pressable
+                style={[styles.button, styles.buttonClose]}
+                onPress={() => setModalVisible(!modalVisible)}
+              >
+                <Text style={styles.textStyle}>No</Text>
+              </Pressable>
+            </View>
+          </View>
+        </View>
+      </Modal>
+      <Pressable
+        style={[styles.button, styles.buttonOpen]}
+        onPress={() => setModalVisible(true)}
+      >
+        <Text style={styles.textStyle}>Purchase Product</Text>
+      </Pressable>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-  homescreen: {
+  centeredView: {
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
+    marginTop: 22,
   },
-  buttonRow: {
-    width: "45%",
-    marginTop: 99,
-    justifyContent: "center",
-    flexDirection: "column",
-    alignContent: "center",
-    alignSelf: "center",
+  modalView: {
+    margin: 20,
+    backgroundColor: "white",
+    borderRadius: 20,
+    padding: 10,
+    alignItems: "stretch",
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    elevation: 5,
   },
+  button: {
+    borderRadius: 15,
+    padding: 15,
+    elevation: 2,
+  },
+  buttonOpen: {
+    backgroundColor: "#2196F3",
+  },
+  buttonClose: {
+    backgroundColor: "#2196F3",
+  },
+  textStyle: {
+    color: "white",
+    fontWeight: "bold",
+    textAlign: "center",
+  },
+  modalText: {
+    marginBottom: 15,
+    textAlign: "center",
+    fontWeight: "bold",
+  },
+  ButtonView: {
+    flexDirection: 'row',
+    justifyContent:'space-between'
+  }
 });
-export default BuyUsACoffee;
+
+export default App;
