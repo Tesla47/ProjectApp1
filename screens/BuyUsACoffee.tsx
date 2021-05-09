@@ -1,5 +1,14 @@
 import React, { useState } from "react";
-import { Alert, Modal, StyleSheet, Text, Pressable, View } from "react-native";
+import {
+  Alert,
+  Modal,
+  StyleSheet,
+  Text,
+  Pressable,
+  View,
+  Image,
+  ImageStore,
+} from "react-native";
 
 const App = () => {
   const [modalVisible, setModalVisible] = useState(false);
@@ -15,6 +24,12 @@ const App = () => {
         }}
       >
         <View style={styles.centeredView}>
+          <View style={styles.AseelLogo}>
+            <Image
+              source={require("../assets/aseel.png")}
+              style={{ height: 100, width: 100 }}
+            />
+          </View>
           <View style={styles.modalView}>
             <Text style={styles.modalText}>
               Thanks for Shopping! Do you wan to buy this product?
@@ -60,11 +75,14 @@ const styles = StyleSheet.create({
     marginTop: 22,
   },
   modalView: {
+    paddingBottom: 50,
+    height: 180,
+    maxHeight: "80%",
     margin: 20,
     backgroundColor: "white",
     borderRadius: 20,
     padding: 10,
-    alignItems: "stretch",
+    // alignItems: "stretch",
     shadowColor: "#000",
     shadowOffset: {
       width: 0,
@@ -73,17 +91,19 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.25,
     shadowRadius: 4,
     elevation: 5,
+    
   },
   button: {
     borderRadius: 15,
-    padding: 15,
+    padding: 10,
     elevation: 2,
+    borderColor: 'white'
   },
   buttonOpen: {
-    backgroundColor: "#2196F3",
+    backgroundColor: "#007399",
   },
   buttonClose: {
-    backgroundColor: "#2196F3",
+    backgroundColor: "#007399",
   },
   textStyle: {
     color: "white",
@@ -96,9 +116,16 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
   },
   ButtonView: {
-    flexDirection: 'row',
-    justifyContent:'space-between'
-  }
+    flexDirection: "row",
+    justifyContent: "space-between",
+    paddingTop: 50,
+  },
+  AseelLogo: {
+    justifyContent: "center",
+    alignContent: "center",
+    flexDirection: "row",
+    
+  },
 });
 
 export default App;
