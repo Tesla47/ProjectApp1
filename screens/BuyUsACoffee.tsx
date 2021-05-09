@@ -8,8 +8,11 @@ import {
   View,
   Image,
   ImageStore,
+  Dimensions,
 } from "react-native";
 
+var screenHeight = Dimensions.get('window').height;
+var screenWidth = Dimensions.get('window').width;
 const App = () => {
   const [modalVisible, setModalVisible] = useState(false);
   return (
@@ -24,22 +27,27 @@ const App = () => {
         }}
       >
         <View style={styles.centeredView}>
-          <View style={styles.AseelLogo}>
-            <Image
-              source={require("../assets/aseel.png")}
-              style={{ height: 100, width: 100 }}
-            />
-          </View>
           <View style={styles.modalView}>
-            <Text style={styles.modalText}>
-              Thanks for Shopping! Do you wan to buy this product?
+            <View style={styles.AseelLogo}>
+              <Image
+                source={require("../assets/aseel.png")}
+                style={{ height: screenWidth * 0.25, width: screenWidth * 0.25 }}
+              />
+            </View>
+            <View>
+              <Text style={styles.modalTextTitle}>
+                  Thanks for Shopping!
+              </Text>
+            </View>
+            <Text style={styles.modalTextBody}>
+              Do you wan to buy this product to you cart or just go to checkout page?
             </Text>
             <View style={styles.ButtonView}>
               <Pressable
                 style={[styles.button, styles.buttonClose]}
                 onPress={() => setModalVisible(!modalVisible)}
               >
-                <Text style={styles.textStyle}>Add it to my Cart</Text>
+                <Text style={styles.textStyle}>Add it to My Cart</Text>
               </Pressable>
               <Pressable
                 style={[styles.button, styles.buttonClose]}
@@ -72,13 +80,12 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    marginTop: 22,
+    marginTop: screenHeight * 0.025,
   },
   modalView: {
-    paddingBottom: 50,
-    height: 180,
-    maxHeight: "80%",
-    margin: 20,
+    height: undefined,
+    marginHorizontal: screenWidth * 0.05,
+    marginVertical: screenHeight * 0.02,
     backgroundColor: "white",
     borderRadius: 20,
     padding: 10,
@@ -91,13 +98,13 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.25,
     shadowRadius: 4,
     elevation: 5,
-    
   },
   button: {
     borderRadius: 15,
-    padding: 10,
+    paddingHorizontal: screenWidth * 0.025,
+    paddingVertical: screenHeight * 0.012,
     elevation: 2,
-    borderColor: 'white'
+    borderColor: "white",
   },
   buttonOpen: {
     backgroundColor: "#007399",
@@ -110,10 +117,17 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     textAlign: "center",
   },
-  modalText: {
+  modalTextTitle: {
     marginBottom: 15,
     textAlign: "center",
     fontWeight: "bold",
+    fontSize: 16
+  },
+  modalTextBody: {
+    marginBottom: 12,
+    textAlign: "center",
+    fontSize: 13
+   
   },
   ButtonView: {
     flexDirection: "row",
@@ -123,8 +137,10 @@ const styles = StyleSheet.create({
   AseelLogo: {
     justifyContent: "center",
     alignContent: "center",
-    flexDirection: "row",
-    
+    top: -60,
+    alignSelf:"center",
+    elevation:15,
+    overflow:'hidden'
   },
 });
 
