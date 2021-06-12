@@ -34,7 +34,7 @@ export default class ImageDetails extends Component<Props, State> {
     this.state = {
       images: images,
       selectedImage: this.props.navigation.getParam("SelectedImage"),
-      visible:false
+      visible: false,
     };
   }
 
@@ -49,14 +49,16 @@ export default class ImageDetails extends Component<Props, State> {
   }
 
   onClickImage = async (item) => {
-    this.selectedImage = [{
-      url: "",
-      props: {
-        source: item.url
-      }
-    }]
-    this.setState({visible:true});
-  }
+    this.selectedImage = [
+      {
+        url: "",
+        props: {
+          source: item.url,
+        },
+      },
+    ];
+    this.setState({ visible: true });
+  };
 
   scrollTo = async () => {
     setTimeout(async () => {
@@ -66,6 +68,10 @@ export default class ImageDetails extends Component<Props, State> {
         animated: true,
       });
     }, 100);
+  };
+
+  onSwipeDown = () => {
+    this.setState({ visible: false });
   };
 
   getAllImages = () => {
@@ -93,7 +99,11 @@ export default class ImageDetails extends Component<Props, State> {
           {this.getAllImages()}
 
           <Modal visible={this.state.visible} transparent={true}>
-            <ImageViewer enableSwipeDown onSwipeDown={() => {this.onClickImage}} imageUrls={this.selectedImage} />
+            <ImageViewer
+              enableSwipeDown
+              onSwipeDown={this.onSwipeDown}
+              imageUrls={this.selectedImage}
+            />
           </Modal>
         </ScrollView>
       </View>
@@ -117,7 +127,11 @@ export default class ImageDetails extends Component<Props, State> {
           this.setViewY(item.id, layout.x);
         }}
       >
-        <TouchableOpacity onPress={() => {this.onClickImage(item)}}>
+        <TouchableOpacity
+          onPress={() => {
+            this.onClickImage(item);
+          }}
+        >
           <Image
             source={item.url}
             style={{
