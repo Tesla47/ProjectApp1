@@ -63,6 +63,10 @@ export default class ImageDetails extends Component<Props, State> {
     return arr;
   };
 
+  onSwipeDown = () =>{
+    this.setState({visible:false});
+  }
+
   render() {
     return (
       <View>
