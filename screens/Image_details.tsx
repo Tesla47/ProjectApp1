@@ -1,4 +1,6 @@
 import React, { Component, useState } from "react";
+import { Modal } from "react-native";
+import ImageViewer from "react-native-image-zoom-viewer";
 
 import {
   StyleSheet,
@@ -11,7 +13,7 @@ import {
 
 import { NavigationStackProp } from "react-navigation-stack";
 import BackHeader from "../components/BackHeader";
-import { ScrollView } from "react-native-gesture-handler";
+import { ScrollView, TouchableOpacity } from "react-native-gesture-handler";
 import { images } from "../data/ImagesList";
 
 var count = 0;
@@ -21,15 +23,18 @@ interface Props {
 interface State {
   images: any;
   selectedImage: any;
+  visible: boolean
 }
 export default class ImageDetails extends Component<Props, State> {
   viewY: any = {};
   scrollView: any;
+  selectedImage: any;
   constructor(props) {
     super(props);
     this.state = {
       images: images,
       selectedImage: this.props.navigation.getParam("SelectedImage"),
+      visible:false
     };
   }
 
@@ -41,6 +46,17 @@ export default class ImageDetails extends Component<Props, State> {
 
   async componentDidMount() {
     await this.scrollTo();
+  }
+
+  onClickImage = async (item) => {
+    console.log("*****************",item)
+    this.selectedImage = [{
+      url: "",
+      props: {
+        source: item.url
+      }
+    }]
+    this.setState({visible:true});
   }
 
   scrollTo = async () => {
@@ -76,6 +92,10 @@ export default class ImageDetails extends Component<Props, State> {
           horizontal
         >
           {this.getAllImages()}
+
+          <Modal visible={this.state.visible} transparent={true}>
+            <ImageViewer imageUrls={this.selectedImage} />
+          </Modal>
         </ScrollView>
       </View>
     );
@@ -98,19 +118,20 @@ export default class ImageDetails extends Component<Props, State> {
           this.setViewY(item.id, layout.x);
         }}
       >
-        <Image
-          source={item.url}
-          style={{
-            width: Dimensions.get("window").width * 0.99,
-            height: Dimensions.get("window").height * 0.7,
-            borderWidth: 2,
-            borderColor: "white",
-            resizeMode: "cover",
-            marginVertical: Dimensions.get("window").width * 0.1,
-            marginHorizontal: Dimensions.get("window").width * 0.02,
-            
-          }}
-        />
+        <TouchableOpacity onPress={() => {this.onClickImage(item)}}>
+          <Image
+            source={item.url}
+            style={{
+              width: Dimensions.get("window").width * 0.99,
+              height: Dimensions.get("window").height * 0.7,
+              borderWidth: 2,
+              borderColor: "white",
+              resizeMode: "cover",
+              marginVertical: Dimensions.get("window").width * 0.1,
+              marginHorizontal: Dimensions.get("window").width * 0.02,
+            }}
+          />
+        </TouchableOpacity>
         <Text>{item.title}</Text>
         <Text>{item.description}</Text>
       </ScrollView>
@@ -122,6 +143,5 @@ const styles = StyleSheet.create({
     position: "relative",
     width: Dimensions.get("window").width,
     height: Dimensions.get("screen").height,
-    
   },
 });
