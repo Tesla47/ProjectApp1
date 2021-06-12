@@ -49,7 +49,6 @@ export default class ImageDetails extends Component<Props, State> {
   }
 
   onClickImage = async (item) => {
-    console.log("*****************",item)
     this.selectedImage = [{
       url: "",
       props: {
@@ -94,7 +93,7 @@ export default class ImageDetails extends Component<Props, State> {
           {this.getAllImages()}
 
           <Modal visible={this.state.visible} transparent={true}>
-            <ImageViewer imageUrls={this.selectedImage} />
+            <ImageViewer enableSwipeDown onSwipeDown={() => {this.onClickImage}} imageUrls={this.selectedImage} />
           </Modal>
         </ScrollView>
       </View>
