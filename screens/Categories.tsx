@@ -3,6 +3,9 @@ import { Button, StyleSheet, Text, View, Linking } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome5";
 import Header from "../components/Header";
 
+
+const Separator = () => <View style={styles.separator} />;
+
 const BuyUsACoffee = (props) => {
   return (
     <View style={styles.container}>
@@ -14,15 +17,28 @@ const BuyUsACoffee = (props) => {
           name="th-large"
           raised={true}
           backgroundColor="#ffa500"
-          // padding={15}
-          paddingLeft={8}
-          paddingRight={8}
           size={30}
           onPress={() => {
             Linking.openURL("https://www.buymeacoffee.com/splendor");
           }}
         >
-          <Text style={{ fontSize: 15 }}>Herat: The "Academy" of Prince BaySunghur (1420-1433)</Text>
+          <Text style={{ fontSize: 15 }}>
+            Herat: The "Academy" of Prince BaySunghur (1420-1433)
+          </Text>
+        </Icon.Button>
+        <Separator />
+        <Icon.Button
+          name="th-large"
+          raised={true}
+          backgroundColor="#ffa500"
+          size={30}
+          onPress={() => {
+            Linking.openURL("https://www.buymeacoffee.com/splendor");
+          }}
+        >
+          <Text style={{ fontSize: 15 }}>
+            Herat: The "Academy" of Prince BaySunghur (1420-1433)
+          </Text>
         </Icon.Button>
       </View>
     </View>
@@ -35,16 +51,21 @@ const styles = StyleSheet.create({
   },
   homescreen: {
     flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
+    justifyContent: "flex-start",
+    alignItems: "flex-start",
   },
   buttonRow: {
-    width: "45%",
-    marginTop: 99,
-    justifyContent: "center",
+    width: "100%",
+    marginTop: 50,
+    justifyContent: "flex-start",
     flexDirection: "column",
-    alignContent: "center",
-    alignSelf: "center",
+    alignContent: "flex-start",
+    alignSelf: "flex-start",
+  },
+  separator: {
+    marginVertical: 8,
+    borderBottomColor: "#737373",
+    borderBottomWidth: StyleSheet.hairlineWidth,
   },
 });
 export default BuyUsACoffee;
