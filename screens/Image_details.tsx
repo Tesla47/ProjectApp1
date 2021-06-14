@@ -23,7 +23,7 @@ interface Props {
 interface State {
   images: any;
   selectedImage: any;
-  visible: boolean
+  visible: boolean;
 }
 export default class ImageDetails extends Component<Props, State> {
   viewY: any = {};
