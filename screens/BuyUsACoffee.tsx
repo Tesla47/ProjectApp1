@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, StyleSheet, Text, View, Linking } from "react-native";
+import {StyleSheet, Text, View, Linking } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome5";
 import Header from "../components/Header";
 

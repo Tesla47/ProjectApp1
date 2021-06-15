@@ -7,7 +7,6 @@ import {
   Text,
   View,
   Image,
-  FlatList,
   Dimensions,
 } from "react-native";
 
