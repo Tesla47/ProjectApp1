@@ -1,7 +1,6 @@
 import { createAppContainer, createSwitchNavigator } from "react-navigation";
 import { createStackNavigator } from "react-navigation-stack";
-import { Platform } from "react-native";
-import {createDrawerNavigator} from 'react-navigation-drawer';
+
 
 import HomeScreen from '../screens/Homescreen';
 import ImageDetails from "../screens/Image_details";
