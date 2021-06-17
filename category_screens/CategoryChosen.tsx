@@ -1,11 +1,11 @@
 import React, { Component, useState } from "react";
 import { NavigationStackProp } from "react-navigation-stack";
-import { Button, Dimensions, Image, StyleSheet, Text, View } from "react-native";
+import { Button, Dimensions, Image, StatusBar, StyleSheet, Text, View } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome5";
 import { NavigationContext } from "react-navigation";
 import Header from "../components/Header";
 import { images } from "../data/ImagesList";
-import { ScrollView, TouchableHighlight, TouchableOpacity } from "react-native-gesture-handler";
+import { FlatList, ScrollView, TouchableHighlight, TouchableOpacity } from "react-native-gesture-handler";
 
 interface Props {
   navigation: NavigationStackProp;
@@ -35,13 +35,25 @@ export default class CategoryChosen extends Component<Props, State> {
     images.forEach(element => {
       if (element.categoryId === categoryID){
         getImages.push(
-          <TouchableOpacity
+          element
+        );}
+    });
+
+    return (
+      <FlatList
+            data={getImages}
+            key={"2"}
+            numColumns={2}
+            contentContainerStyle={styles.homescreen}
+            keyExtractor={(item) => item.id.toString()}
+            renderItem = {({item}) => 
+                        <TouchableOpacity
             activeOpacity={0.8}
-            key={element.id}
-            onPress={() => {this.onClickImage(element)}}
+            key={item.id}
+            onPress={() => {this.onClickImage(item)}}
           >
             <Image
-              source={element.url}
+              source={item.url}
               style={{
                 width: Dimensions.get("window").width * 0.45,
                 height: Dimensions.get("window").width * 0.55,
@@ -53,21 +65,18 @@ export default class CategoryChosen extends Component<Props, State> {
               }}
             />
           </TouchableOpacity>
-        );}
-    });
-    return getImages;
+            }
+          />
+    )
   }
   render() {
     return (
-      <View>
-        <View>
+      <View style={{minHeight:"100%",width:"100%"}}>
+        <View
+        >
           <Header />
         </View>
-        <ScrollView style={styles.container}>
-        <View style={styles.outerContainer}>
-            {this.getImagesList()}
-        </View>
-      </ScrollView>
+        <View style={styles.outerContainer}>{this.getImagesList()}</View>
       </View>
     );
   }
@@ -75,16 +84,20 @@ export default class CategoryChosen extends Component<Props, State> {
 
 const styles = StyleSheet.create({
   container: {
+    flex: 1,
   },
   outerContainer: {
     position: "relative",
     marginTop: Dimensions.get("window").height * 0.05,
-
+    flex: 1,
   },
   homescreen: {
-    flex: 1,
-    justifyContent: "center",
+    width: Dimensions.get("window").width,
     alignItems: "center",
+    justifyContent: "center",
+    minHeight: "100%",
+    paddingBottom: Dimensions.get("window").height * 0.1,
+    backgroundColor: "white",
   },
   buttonRow: {
     width: "45%",
