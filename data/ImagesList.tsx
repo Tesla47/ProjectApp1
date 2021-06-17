@@ -12,12 +12,13 @@ export var images = [
     id: 2,
     title: "cool image #2",
     description: "Some people sitting in a garden",
+    categoryId: 1,
   },
-  { url: require("../assets/pic_3.jpg"), id: 3 },
-  { url: require("../assets/pic_4.jpg"), id: 4 },
-  { url: require("../assets/pic_5.jpg"), id: 5 },
-  { url: require("../assets/pic_6.jpg"), id: 6 },
-  { url: require("../assets/pic_7.jpg"), id: 7 },
+  { url: require("../assets/pic_3.jpg"), id: 3, categoryId: 1 },
+  { url: require("../assets/pic_4.jpg"), id: 4, categoryId: 1 },
+  { url: require("../assets/pic_5.jpg"), id: 5, categoryId: 1 },
+  { url: require("../assets/pic_6.jpg"), id: 6, categoryId: 1 },
+  { url: require("../assets/pic_7.jpg"), id: 7, categoryId: 1 },
   { url: require("../assets/pic_8.jpg"), id: 8 },
   { url: require("../assets/pic_9.jpg"), id: 9 },
   { url: require("../assets/pic_10.jpg"), id: 10 },
@@ -58,4 +59,12 @@ export var images = [
   { url: require("../assets/pic_45.jpg"), id: 45 },
   { url: require("../assets/pic_46.jpg"), id: 46 },
   { url: require("../assets/pic_47.jpg"), id: 47 },
+];
+
+export var categoriesList = [
+  { title: "category1", id: 1 },
+  { title: "categy2 ", id: 2 },
+  { title: "categy3 ", id: 3 },
+  { title: "categy4 ", id: 4 },
+  { title: "categy5 ", id: 5 },
 ];

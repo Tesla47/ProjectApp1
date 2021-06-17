@@ -1,46 +1,73 @@
 import React, { Component, useState } from "react";
 import { NavigationStackProp } from "react-navigation-stack";
-import {
-  Button,
-  StyleSheet,
-  Text,
-  View,
-  
-} from "react-native";
+import { Button, Dimensions, Image, StyleSheet, Text, View } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome5";
 import { NavigationContext } from "react-navigation";
 import Header from "../components/Header";
+import { images } from "../data/ImagesList";
+import { ScrollView, TouchableHighlight, TouchableOpacity } from "react-native-gesture-handler";
 
 interface Props {
   navigation: NavigationStackProp;
 }
 
-interface State {}
+interface State {
+
+}
 
 export default class CategoryChosen extends Component<Props, State> {
+
+  constructor(props){
+    super(props);
+
+  }
+
+  onClickImage = (element) => {
+    console.log(element,"*************");
+    this.props.navigation.navigate("Image Details", {
+      SelectedImage: element,categoryId:element.categoryId
+    })
+  }
+
+  getImagesList = () => {
+    var categoryID = this.props.navigation.getParam("categoryId")
+    var getImages = []
+    images.forEach(element => {
+      if (element.categoryId === categoryID){
+        getImages.push(
+          <TouchableOpacity
+            activeOpacity={0.8}
+            key={element.id}
+            onPress={() => {this.onClickImage(element)}}
+          >
+            <Image
+              source={element.url}
+              style={{
+                width: Dimensions.get("window").width * 0.45,
+                height: Dimensions.get("window").width * 0.55,
+                borderWidth: 2,
+                borderColor: "white",
+                resizeMode: "cover",
+                marginVertical: Dimensions.get("window").width * 0.02,
+                marginHorizontal: Dimensions.get("window").width * 0.02,
+              }}
+            />
+          </TouchableOpacity>
+        );}
+    });
+    return getImages;
+  }
   render() {
     return (
-      <View style={styles.container}>
+      <View>
         <View>
           <Header />
         </View>
-        <View style={styles.buttonRow}>
-          <Icon.Button
-            name="coffee"
-            raised={true}
-            backgroundColor="#ffa500"
-            // padding={15}
-            paddingLeft={8}
-            paddingRight={8}
-            size={30}
-            onPress={() => {
-              console.log("button pressed nothing happened")
-              //("https://www.buymeacoffee.com/splendor");
-            }}
-          >
-            <Text style={{ fontSize: 15 }}>Buy Us a Coffee</Text>
-          </Icon.Button>
+        <ScrollView style={styles.container}>
+        <View style={styles.outerContainer}>
+            {this.getImagesList()}
         </View>
+      </ScrollView>
       </View>
     );
   }
@@ -48,7 +75,11 @@ export default class CategoryChosen extends Component<Props, State> {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+  },
+  outerContainer: {
+    position: "relative",
+    marginTop: Dimensions.get("window").height * 0.05,
+
   },
   homescreen: {
     flex: 1,

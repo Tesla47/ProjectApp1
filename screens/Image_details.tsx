@@ -23,6 +23,7 @@ interface State {
   images: any;
   selectedImage: any;
   visible: boolean;
+  categoryId?: any
 }
 export default class ImageDetails extends Component<Props, State> {
   viewY: any = {};
@@ -33,6 +34,7 @@ export default class ImageDetails extends Component<Props, State> {
     this.state = {
       images: images,
       selectedImage: this.props.navigation.getParam("SelectedImage"),
+      categoryId: this.props.navigation.getParam("categoryId"),
       visible: false,
     };
   }
@@ -76,10 +78,26 @@ export default class ImageDetails extends Component<Props, State> {
   getAllImages = () => {
     var arr = [];
     var sId = this.state.selectedImage.id;
-    this.state.images.forEach((element) => {
-      var image = this.loadImage(element);
-      arr.push(image);
-    });
+    var isCategory = this.state.categoryId;
+    if(isCategory){
+      this.state.images.forEach((element) => {
+        if (this.state.categoryId && this.state.categoryId === element.categoryId) {
+          var image = this.loadImage(element);
+          arr.push(image);
+        }
+      });
+    }
+    else{
+      this.state.images.forEach((element) => {
+          var image = this.loadImage(element);
+          arr.push(image);
+        
+      });
+      };
+    
+
+
+    
     return arr;
   };
 

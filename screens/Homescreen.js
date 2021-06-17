@@ -30,6 +30,13 @@ export default class PicFlatlist extends Component {
     this.setState({ loadImageCount: ImageCount });
   };
 
+  onClickImage = (element) => {
+    console.log(element, "*************");
+    this.props.navigation.navigate("Image Details", {
+      SelectedImage: element,
+    });
+  };
+
   static navigationOptions = () => {
     return {
       header: null,
@@ -75,13 +82,9 @@ export default class PicFlatlist extends Component {
             keyExtractor={(item) => item.id.toString()}
             ListFooterComponent={this.renderFooter}
             renderItem={({ item }) => (
-              <TouchableOpacity 
+              <TouchableOpacity
                 activeOpacity={0.8}
-                onPress={({}) =>
-                  this.props.navigation.navigate("Image Details", {
-                    SelectedImage: item,
-                  })
-                }
+                onPress={() => {this.onClickImage(item)}}
               >
                 <Image
                   source={item.url}

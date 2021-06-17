@@ -9,6 +9,7 @@ import About from "../screens/About";
 import Categories from '../screens/Categories';
 import ContactUs from '../screens/ContactUs';
 import BuyUsACoffee from '../screens/BuyUsACoffee';
+import CategoryChosen from '../category_screens/CategoryChosen';
 const Separator = () => <View style={styles.separator} />;
 
 const DrawerNavigator = createDrawerNavigator({
