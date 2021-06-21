@@ -31,7 +31,7 @@ export default class PicFlatlist extends Component {
   };
 
   onClickImage = (element) => {
-    console.log(element, "*************");
+    
     this.props.navigation.navigate("Image Details", {
       SelectedImage: element,
     });

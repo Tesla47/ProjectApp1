@@ -14,7 +14,13 @@ export var images = [
     description: "Some people sitting in a garden",
     categoryId: 1,
   },
-  { url: require("../assets/pic_3.jpg"), id: 3, categoryId: 1 },
+  {
+    url: require("../assets/pic_3.jpg"),
+    id: 3,
+    title: ImageData["image3"].title,
+    description: ImageData["image3"].description,
+    categoryId: 1,
+  },
   { url: require("../assets/pic_4.jpg"), id: 4, categoryId: 1 },
   { url: require("../assets/pic_5.jpg"), id: 5, categoryId: 1 },
   { url: require("../assets/pic_6.jpg"), id: 6, categoryId: 1 },
@@ -62,9 +68,13 @@ export var images = [
 ];
 
 export var categoriesList = [
-  { title: "category1", id: 1 },
-  { title: "categy2 ", id: 2 },
-  { title: "categy3 ", id: 3 },
-  { title: "categy4 ", id: 4 },
-  { title: "categy5 ", id: 5 },
+  { title: "By Year (Gregorian Calendar)", id: 1 },
+  { title: "By Year (Hijri Qamari Calendar) ", id: 2 },
+  { title: "By Poet", id: 3 }, // This part has many other sub categories
+  { title: "By Dynasty", id: 4 },
+  { title: "By Painter", id: 5 }, // This category has many other sub categories
+  { title: "By Title of The Book/Poem", id: 6 },
+  { title: "By Museum ", id: 7 },
+  { title: "By City", id: 8 },
+  { title: "By Country", id: 9 },
 ];
