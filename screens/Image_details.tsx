@@ -1,4 +1,4 @@
-import React, { Component, useState } from "react";
+import React, { Component} from "react";
 import { Modal } from "react-native";
 import ImageViewer from "react-native-image-zoom-viewer";
 
@@ -94,10 +94,7 @@ export default class ImageDetails extends Component<Props, State> {
         
       });
       };
-    
-
-
-    
+        
     return arr;
   };
 

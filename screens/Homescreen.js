@@ -15,6 +15,8 @@ import {
 import Header from "../components/Header";
 import { images } from "../data/ImagesList";
 
+
+
 var loadImageCount = 6;
 export default class PicFlatlist extends Component {
   constructor(props) {
@@ -42,6 +44,7 @@ export default class PicFlatlist extends Component {
       header: null,
     };
   };
+
   renderFooter = () => {
     if (this.state.loadImageCount < this.state.images.length) {
       return (
@@ -61,6 +64,7 @@ export default class PicFlatlist extends Component {
       return null;
     }
   };
+
   render() {
     return (
       <View>

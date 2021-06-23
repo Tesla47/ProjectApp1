@@ -16,8 +16,6 @@ interface State {
 }
 
 
-
-
 export default class categories extends Component<Props, State> {
   getCategories = () => {
     var arr = []
