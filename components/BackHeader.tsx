@@ -28,11 +28,10 @@ class BackHeader extends React.Component<Props,State> {
         <TouchableOpacity
           style={styles.trigger}
           onPress={() => {
-            //console.log("************clicked");
             this.props.navigation.goBack();
           }}
         >
-          <View style={{ width: 60, height: 60 }}>
+          <View style={{ width: 60, height: 35 }}>
             <Ionicons name="arrow-back" size={35} color={"grey"} />
           </View>
         </TouchableOpacity>

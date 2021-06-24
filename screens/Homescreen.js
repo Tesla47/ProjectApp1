@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { StatusBar } from "expo-status-bar";
 import Icon from "react-native-vector-icons/FontAwesome";
+import { Dimensions, PixelRatio, useWindowDimensions } from "react-native";
 
 import {
   StyleSheet,
@@ -8,12 +9,12 @@ import {
   View,
   Image,
   FlatList,
-  Dimensions,
   TouchableOpacity,
 } from "react-native";
 
 import Header from "../components/Header";
 import { images } from "../data/ImagesList";
+
 
 
 
@@ -44,6 +45,7 @@ export default class PicFlatlist extends Component {
       header: null,
     };
   };
+  
 
   renderFooter = () => {
     if (this.state.loadImageCount < this.state.images.length) {
@@ -117,7 +119,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     height: undefined,
-    paddingBottom: Dimensions.get("window").height * 0.1,
+    paddingBottom: Dimensions.get("window").height * 0.14,
     backgroundColor: "white",
   },
   outerContainer: {
@@ -130,5 +132,22 @@ const styles = StyleSheet.create({
     alignContent: "center",
     alignSelf: "center",
     justifyContent: "center",
+  },
+  card: {
+    height: "25%",
+    alignItems: "center",
+    marginRight: 5,
+    marginLeft: 5,
+    position: "relative",
+    marginTop: 45,
+    justifyContent: "flex-start",
+    alignSelf: "center",
+    shadowColor: "black",
+    shadowOffset: { width: 0, height: 2 },
+    shadowRadius: 6,
+    shadowOpacity: 0.26,
+    elevation: 8,
+    backgroundColor: "white",
+    borderRadius: 10,
   },
 });
