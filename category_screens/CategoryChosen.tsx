@@ -14,7 +14,6 @@ import Icon from "react-native-vector-icons/FontAwesome5";
 import { images } from "../data/ImagesList";
 import BackHeader from "../components/BackHeader";
 
-
 interface Props {
   navigation: NavigationStackProp;
 }

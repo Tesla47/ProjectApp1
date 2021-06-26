@@ -15,6 +15,7 @@ import BackHeader from "../components/BackHeader";
 import { ScrollView, TouchableOpacity } from "react-native-gesture-handler";
 import { images } from "../data/ImagesList";
 
+
 var count = 0;
 interface Props {
   navigation: NavigationStackProp;
@@ -25,6 +26,9 @@ interface State {
   visible: boolean;
   categoryId?: any
 }
+
+
+
 export default class ImageDetails extends Component<Props, State> {
   viewY: any = {};
   scrollView: any;
@@ -159,8 +163,10 @@ export default class ImageDetails extends Component<Props, State> {
             }}
           />
         </TouchableOpacity>
-        <Text>{item.title}</Text>
-        <Text>{item.description}</Text>
+        {/* <View style={styles.card}> */}
+          <Text>{item.title}</Text>
+          <Text>{item.description}</Text>
+        {/* </View> */}
       </ScrollView>
     );
   };
@@ -170,5 +176,22 @@ const styles = StyleSheet.create({
     position: "relative",
     width: Dimensions.get("window").width,
     height: Dimensions.get("screen").height,
+  },
+  card: {
+    height: "25%",
+    alignItems: "center",
+    marginRight: 5,
+    marginLeft: 5,
+    position: "relative",
+    marginTop: 45,
+    justifyContent: "flex-start",
+    alignSelf: "center",
+    shadowColor: "black",
+    shadowOffset: { width: 0, height: 2 },
+    shadowRadius: 6,
+    shadowOpacity: 0.26,
+    elevation: 8,
+    backgroundColor: "white",
+    borderRadius: 10,
   },
 });

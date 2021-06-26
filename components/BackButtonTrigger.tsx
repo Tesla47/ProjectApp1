@@ -2,20 +2,21 @@ import React from "react";
 import {
   TouchableOpacity,
   StyleSheet,
-  ProgressViewIOSComponent,
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
-import { withNavigation } from "react-navigation";
 import { NavigationStackProp } from "react-navigation-stack";
-import HomeScreen from "../screens/Homescreen";
-import About from "../screens/About";
+
 
 
 interface Props {
   navigation: NavigationStackProp;
 }
-interface State {}
-class BackButtonTrigger extends React.Component<Props, State> {
+interface State {
+
+}
+
+
+export default class BackButtonTrigger extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props);
   }
@@ -24,7 +25,6 @@ class BackButtonTrigger extends React.Component<Props, State> {
       <TouchableOpacity
         style={styles.trigger}
         onPress={() => {
-          
           this.props.navigation.goBack();
         }}
       >
@@ -36,6 +36,6 @@ class BackButtonTrigger extends React.Component<Props, State> {
 const styles = StyleSheet.create({
   trigger: {
     marginLeft: 10,
+    backgroundColor: 'blue'
   },
 });
-export default BackButtonTrigger;
